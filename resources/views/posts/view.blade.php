@@ -15,13 +15,15 @@
     <div class="card border-info mb-3" style="max-width: 18rem; margin:50px">
         <div class="card-header">post details</div>
         <div class="card-body text-info">
-            <h5 class="card-title"> {{ $post['title'] }} </h5>
-            <p class="card-text"> {{ $post['desc'] }} </p>
+            <h5 class="card-title"> {{ $data->title}} </h5>
+            <p class="card-text"> {{ $data->desc }} </p>
+            <p class="card-text"> {{ $data->created_at->diffForHumans() }} </p>
             <a href="/posts" class="btn btn-info">back to all posts </a>
         </div>
 
       
     
+
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">

@@ -24,14 +24,24 @@
 </nav>
 {{--@dd($posts)--}}
 <div class="container">
-    <form class="form-control" action="#" >
+    <form method="POST"  action="{{ route('posts.store') }}" >
+        @csrf
         <div class="mb-3">
             <label  class="form-label">Title</label>
             <input type="text" name="title" class="form-control" >
         </div>
         <div class="mb-3">
             <label  class="form-label">Description</label>
-            <input type="text"  name="description" class="form-control" >
+            <input type="text"  name="desc" class="form-control" >
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">user</label>
+            <select  class="form-select" aria-label="Default select example"  name="user_id">
+                @foreach ( $users as $user)
+                    <option value=" {{ $user->id }} "> {{$user->name }}</option>
+                @endforeach
+            </select>
         </div>
 
         <div class="mb-3 text-center">

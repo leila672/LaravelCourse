@@ -24,15 +24,27 @@
 </nav>
 {{--@dd($posts)--}}
 <div class="container">
-    <form class="form-control" action="#" >
+    <form method="POST"  action="{{ route('posts.update', $data -> id ) }}" >
+        @method('put')           
+        @csrf
         <div class="mb-3">
             <label  class="form-label">Title</label>
-            <input type="text" name="title" class="form-control" value="{{ $post['title'] }}" >
+            <input type="text" name="title" class="form-control" value="{{ $data->title }}" >
         </div>
         <div class="mb-3">
             <label  class="form-label">Description</label>
-            <input type="text"  name="description" class="form-control" value="{{ $post['desc'] }}">
+            <input type="text"  name="desc" class="form-control" value="{{ $data->desc}}">
         </div>
+
+        <div class="mb-3">
+            <label  class="form-label">user</label>
+            <select  class="form-select" aria-label="Default select example"  name="user_id">
+                @foreach ( $users as $user)
+                    <option value=" {{ $user->id }} "> {{$user->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
 
         <div class="mb-3 text-center">
             <input type="submit" class="btn btn-success">
