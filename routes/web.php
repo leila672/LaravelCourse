@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\LoginController;
 
 
 
@@ -30,3 +31,7 @@ Route::get('/posts', [App\Http\Controllers\HomeController::class, 'index'])->nam
 
 Route::resource('posts', PostsController::class);
  });
+
+
+ Route::get('auth/google', [LoginController::class, 'redirectToGoogle']);
+Route::get('auth/google/callback', [LoginController::class, 'handleGoogleCallback']);
