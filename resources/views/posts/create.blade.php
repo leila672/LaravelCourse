@@ -34,6 +34,17 @@
                     </select>
                 </div>
 
+                <div class="mb-3">
+
+                    <input hidden name="post_numbers" type="text" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" value="{{ $user->post_numbers }} " readonly />
+
+                        @if ($errors->has('post_numbers'))
+                        <div class="text-danger">{{ $errors->first('post_numbers') }}</div>
+                    @endif
+    
+                </div>
+              
                 <div class="mb-3 text-center">
                     <input type="submit" class="btn btn-success">
                 </div>
@@ -41,4 +52,4 @@
 
         </div>
     </div>
-    @endsection
+@endsection

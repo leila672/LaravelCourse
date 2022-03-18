@@ -33,7 +33,7 @@
                         <td>{{ $post->created_at->diffForHumans() }}</td>
 
 
-                        @if (Auth::id() == $post->user_id)
+                        {{-- @if (Auth::id() == $post->user_id)
                             <td><a href="{{ route('posts.show', $post->id) }}" class="btn btn-info">View </a></td>
                             <td><a href="{{ route('posts.edit', $post->id) }}" class="btn btn-warning">Edit </a></td>
                             <td>
@@ -49,7 +49,19 @@
                             <td><p>access</p></td>
                             <td><p>this post</p></td>
 
-                        @endif
+                        @endif --}}
+
+                        <td><a href="{{ route('posts.show', $post->id) }}" class="btn btn-info">View </a></td>
+                        <td><a href="{{ route('posts.edit', $post->id) }}" class="btn btn-warning">Edit </a></td>
+                        <td>
+                            <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger"
+                                    onclick="return confirm('Are you sure?')">Delete</button>
+                            </form>
+                        </td>
+                        
                     </tr>
                 @endforeach
 
